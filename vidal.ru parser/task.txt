@@ -1,0 +1,82 @@
+Нужен скрипт чтобы скачать Анатомо-Терапевтически-Химическая (АТХ) система классификации (ATC) с этого сайта https://www.vidal.ru/drugs/atc 
+Справочник идет в древовидной структуре. Мне нужно полностью его скачать до 7 знаков.
+Потом нужно сделать эксель файл
+
+Api documentation:
+Все запросы принимаются только в кодировке UTF-8. Ответ формируется в JSON-формате. Данные типа «Дата» указываются в формате Y-m-d (например 2014-03-21), данные типа «Дата/время» — в формате Y-m-d\TH:i:sP (например: 2014-03-21T05:14:07).
+У приложения стоит ограничение на кол-во зпросов в секунду, не больше 4 (4 rps).
+Авторизация производится любым из двух способов:
+•	- с помощью http авторизации
+•	- API-ключа, который передается заголовке X-Token
+        
+            https://www.vidal.ru/api/rest/v1/product/list
+        
+    
+В случае отсутствия API-ключа либо в случае, если он неверный, API сообщает об ошибке.
+Разрешается обращаться не чаще 3 запросов в секунду с одного IP. В случае более высокой нагрузки API будет отдавать ответ с ошибкой
+Все параметры фильтрации обарачиваются в filter, пример запроса:
+        
+            https://www.vidal.ru/api/rest/v1/product/list?filter[name]=Аспирин&page=1&limit=100
+        
+    
+Формат ответа
+В случае ошибки в запросе помимо самого ответа присутствует информация об ошибке.
+    
+        https://www.vidal.ru/api/rest/v1/product/list?filter[name]=Аспирин&page=1&limit=not_valid
+        {
+            "success": false,
+            "errorMsg": "Errors in the pagination parameters",  // Общее описание ошибки
+            "errors": {                                         // Описание параметров
+                "page": "Значение должно быть числом."
+            }
+        }
+    
+    
+Пример запрос получения информации по штрихкоду
+    
+        https://www.vidal.ru/api/rest/v1/product/list?filter[barCode]=NNNNNNNNN
+
+
+Аналоги
+GET
+/api/rest/v1/analog/list
+Поиск информации о аналогах
+GET
+/api/rest/v1/product/{id}/analog/list
+Получение информации о аналогах продукта
+Atc
+GET
+/api/rest/v1/atc/list
+Список atc
+GET
+/api/rest/v1/atc/{code}/get
+Информация о atc
+Document
+GET
+/api/rest/v1/document/list
+Document list
+GET
+/api/rest/v1/document/{id}/get
+Document view
+Molecule
+GET
+/api/rest/v1/molecule/list
+Molecule list
+GET
+/api/rest/v1/molecule/{id}/get
+Molecule view
+Продукты
+GET
+/api/rest/v1/product/form/list
+Список форм продуктов
+GET
+/api/rest/v1/product/list
+Список продуктов
+GET
+/api/rest/v1/product/{id}/get
+Информация о продукте
+Взаимодействие
+GET
+/api/rest/v1/product/interaction/{id1}/{id2}/get
+Взаимодействие двух препаратов
+

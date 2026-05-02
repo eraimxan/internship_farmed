@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--META TAGS NECESSARY!!!-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="ru" />
+    <meta name="language" content="ru" />
+    <meta name="title" content="Раздел статистики" />         <meta name="description" content="Раздел статистики" />         <meta name="robots" content="index, follow" />
+    <meta name="author" content="Бюро Национальной статистики Агентства по стратегическому планированию и реформам Республики Казахстан" />
+    <meta name="copyright" content="2019 http://taldau.stat.kz" />
+    <meta name="document-state" content="Dynamic" />
+    <meta name="revisit-after" content="30days" />
+    <meta name="distribution" content="Global" />
+    <meta name="rating" content="General" />
+    <meta name="abstract" content="abstract" />
+    <meta name="classification" content="News" />
+    <meta name="pics-label" content="pics rating" />
+    <base href="https://taldau.stat.gov.kz/" />
+
+    <title>Раздел - </title>
+
+    <link rel="shortcut icon" href="/Content/images/common/icon.gif" />
+    <link href="/Content/css/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Scripts/superfish/css/superfishrounded_html5.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/mail/popbox.css" media="screen" charset="utf-8" rel="stylesheet" type="text/css" />
+    
+    <link href="/Content/css/export/exporticons.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/News/newsWidget.css"/>
+    <link href="/Content/css/TabMenu.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/mainGrid.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/diQuery-collapsiblePanel.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/dropdown.css" media="all" rel="stylesheet" type="text/css" />
+
+
+    <script src="/Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="/Scripts/superfish/js/hoverIntent.js" type="text/javascript"></script>
+    <script src="/Scripts/superfish/js/jquery.bgiframe.min.js" type="text/javascript"></script>
+    <script src="/Scripts/superfish/js/superfish.js" type="text/javascript"></script>
+    <script src="/Scripts/superfish/js/supersubs.js" type="text/javascript"></script>
+    <script src="/Scripts/mail/popbox.js" type="text/javascript"></script>
+    <script src="/Scripts/mail/Dictionary.ru.js" type="text/javascript"></script>
+    <script src="/Scripts/mail/subscribe.js" type="text/javascript"></script>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments);
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-23233519-1', 'stat.kz');
+        ga('send', 'pageview');
+
+        function Url(Path) { return jQuery('base').attr('href') + "ru/" + Path; }
+
+        var local_lang = "ru";
+        var local_agency = "Бюро Национальной статистики Агентства по стратегическому планированию и реформам Республики Казахстан";
+
+        $('.rounded_menu').mouseover(function() {
+            $(this).css(
+                "border-radius", "10px 10px 0px 0px"
+            );
+        });
+        jQuery(function() {
+            $("#playlist li").on("click", function() {
+                $("#playlist li").removeClass('selected');
+                var self = $(this);
+                self.addClass('selected');
+                $("#popupVideo video").attr({
+                    "src": self.attr("movieurl"),
+                    "poster": "",
+                    "autoplay": "autoplay"
+                });
+            });
+        });
+
+        var popupStatus = 0;
+
+        function func() {
+
+            //Aligning our box in the middle
+            var windowWidth = document.documentElement.clientWidth;
+            var windowHeight = document.documentElement.clientHeight;
+            var popupHeight = $("#popupLogin").height();
+            var popupWidth = $("#popupLogin").width();
+            //centering
+            $("#popupLogin").css({
+                "position": "absolute",
+                "top": windowHeight / 2 - popupHeight / 2,
+                "left": windowWidth / 2 - popupWidth / 2
+            });
+
+            //aligning our full bg
+            $("#PopupBackground").css({
+                "height": windowHeight
+            });
+
+
+            // Pop up the div and Bg
+            if (popupStatus == 0) {
+                $("#PopupBackground").css({
+                    "opacity": "0.7"
+                });
+                $("#PopupBackground").fadeIn("slow");
+                $("#popupLogin").fadeIn("slow");
+                popupStatus = 1;
+            }
+
+
+        };
+
+        function popupclose() {
+            if (popupStatus == 1) {
+                $("#PopupBackground").fadeOut("slow");
+                $("#popupLogin").fadeOut("slow");
+                popupStatus = 0;
+            }
+        };
+
+        var popupVideoStatus = 0;
+
+        function openVideo(idx) {
+            popupVideoClose();
+            //Aligning our box in the middle
+            var windowWidth = document.documentElement.clientWidth;
+            var windowHeight = document.documentElement.clientHeight;
+            var divPopup = $("#popupVideo");
+            var popupHeight = divPopup.height();
+            var popupWidth = divPopup.width();
+            //centering
+            divPopup.css({
+                "position": "absolute",
+                "top": windowHeight / 2 - popupHeight / 2,
+                "left": windowWidth / 2 - popupWidth / 2
+            });
+
+            //aligning our full bg
+            $("#PopupBackground").css({
+                "height": windowHeight
+            });
+
+
+            // Pop up the div and Bg
+            if (popupVideoStatus == 0) {
+                var video = $('#popupVideo video');
+                $("#PopupBackground").css({
+                    "opacity": "0.7"
+                });
+                $("#PopupBackground").fadeIn("slow");
+                divPopup.fadeIn("slow");
+                $($("#playlist li")[idx]).click();
+                //video.html('<source src="' + url + '"/>');
+                video.load();
+                popupVideoStatus = 1;
+            }
+        };
+
+        function popupVideoClose() {
+            if (popupVideoStatus == 1) {
+                $("#PopupBackground").fadeOut("slow");
+                $("#popupVideo").fadeOut("slow");
+                popupVideoStatus = 0;
+                $('#popupVideo video').trigger('pause');
+            }
+        };
+
+    </script>
+    <script>
+    var scales = ["scale13", "scale15", "scale20"];
+    var scaleSizes = ["14px", "16px", "19px"];
+    var scaleZoom = false;
+    var isScaled = false;
+    var oldOne = null;
+    var oldXY = null;
+
+    function setScale(scale) {
+        return scaleZoom ? setScaleZ(scale) : setScaleF(scale);
+    }
+
+    function clearScale() {
+        var l = $('body');
+        for (var i = 0; i < scales.length; i++) {
+            l.removeClass(scales[i]);
+        }
+        l.removeClass('scaled');
+        l.css('font-size', '12px');
+        isScaled = false;
+        window.sessionStorage.setItem("scale", "");
+        //Element.prototype.getBoundingClientRect = oldOne;
+        return false;
+    }
+
+    function setScaleZ(scale) {
+        clearScale();
+        if (null == scale || '' === scale) return;
+        window.sessionStorage.setItem("scale", scale);
+        var l = $('body');
+        l.addClass(scales[scale]);
+        isScaled = true;
+        oldOne = oldOne || Element.prototype.getBoundingClientRect;
+        if(window.Ext){
+            oldXY = oldXY || Ext.dom.Element.prototype.getXY;
+        }
+        //Element.prototype.getBoundingClientRect = newOne;
+        //Ext.dom.Element.prototype.getXY = getXY;
+        return false;
+    }
+
+    function setScaleF(scale) {
+        clearScale();
+        if (null == scale || '' === scale) return;
+        window.sessionStorage.setItem("scale", scale);
+        var l = $('body');
+        l.addClass('scaled');
+        l.css('font-size', scaleSizes[scale])
+        isScaled = true;
+        oldOne = oldOne || Element.prototype.getBoundingClientRect;
+        if (window.Ext) {
+            oldXY = oldXY || Ext.dom.Element.prototype.getXY;
+        }
+        //Element.prototype.getBoundingClientRect = newOne;
+        //Ext.dom.Element.prototype.getXY = getXY;
+        return false;
+    }
+
+    function restoreScale() {
+        var scale = window.sessionStorage.getItem("scale");
+        setScale(scale);
+    }
+
+    var newOne = function () {
+        var left = this.offsetLeft,
+            top = this.offsetTop,
+            height = this.offsetHeight,
+            width = this.offsetWidth;
+        return {
+            left: left
+            , top: top
+            , width: width
+            , height: height
+            , right: left + width
+            , bottom: top + height
+        };
+    };
+    var getXY = function() {
+        var round = Math.round,
+            dom = this.dom,
+            body = DOC.body,
+            x = 0,
+            y = 0,
+            bodyRect,
+            rect;
+
+        if (dom !== DOC && dom !== body) {
+            // IE (including IE10) throws an error when getBoundingClientRect 
+            // is called on an element not attached to dom 
+            try {
+                bodyRect = body.getBoundingClientRect();
+                rect = dom.getBoundingClientRect();
+
+                x = rect.left - bodyRect.left;
+                y = rect.top - bodyRect.top;
+            } catch (ex) {
+            }
+        }
+
+        return [round(x), round(y)];
+    };
+    //Element.prototype.getBoundingClientRect = newOne;
+    jQuery(restoreScale);
+
+</script>
+    
+    <script type="text/javascript">
+        function Url(Path) { return jQuery('base').attr('href') + "ru/" + Path; }
+        function UrlImage(Path) {
+            return jQuery('base').attr('href') + Path;
+        }
+    </script>
+
+    <script src="/Scripts/Highcharts-3.0.8/js/dictionary/measure_ru.js" type="text/javascript"></script>
+    <script src="/Scripts/Highcharts-3.0.8/js/highcharts.js" type="text/javascript"></script>
+    <script src="/Scripts/Highcharts-3.0.8/js/highcharts-more.js" type="text/javascript"></script>
+    <script src="/Scripts/Chart/GlobalVariables.js" type="text/javascript"></script>
+    <script src="/Scripts/Chart/Dictionaries/Export/Dictionary.ru.js" type="text/javascript"></script>
+    <script src="/Scripts/Cabinet/libraries/exporting.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>	
+    <script src="/Scripts/diQuery-collapsiblePanel.js" type="text/javascript"></script>
+    <script src="/Scripts/MainGrid/MainGridDictionary.ru.js" type="text/javascript"></script>
+    <script src="/Scripts/MainGrid/FunctionsForMainGrid.js" type="text/javascript"></script>   
+
+    <!--Maps for chart constructor-->
+    <script src="/Scripts/base64.js" type="text/javascript"></script>
+<script src="/Scripts/canvas2image.js" type="text/javascript"></script>
+    <script src="/Scripts/Map/js/kinetic-v4.4.0.min.js" type="text/javascript"></script>
+    <script src="/Scripts/accounting.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/CloudGraphics/map/lang_ru.js"></script>
+    <script type="text/javascript" src="/Scripts/CloudGraphics/map/map-all.min.js"></script>
+    <script type="text/javascript" src="/Scripts/Chart/mapScript.js"></script>
+<!--Maps for chart constructor--> 
+
+
+    </head>
+
+    <body>
+        <div id="popupLogin">
+            <a href="javascript:popupclose()" class="close" id="popupLoginClose"><img src="../../Content/images/common/close.png" align=right></a>
+            <table>
+                <tr>
+                    <td style="padding:5px 5px 2px 8px; border:1px solid #CCC; background-color:#f5f5f5">
+
+
+
+<script type="text/javascript">
+    function Authenticate() {
+        console.log('asfgasf');
+        $('#errorLabel').text('');
+        $('#errorLabel').css('visibility', 'hidden');
+        $.ajax({
+            url: Url("Cabinet/Authenticate"),
+            data: { login: $('#UserName').val(), word: $('#word').val() },
+            type: 'GET',
+            success: function (data) {
+
+                switch (data) {
+                    case '0': $('#errorLabel').text('Неправильный логин или пароль'); $('#errorLabel').css("visibility", "visible"); break;
+                    case '-1': $('#errorLabel').text('Неправильный логин или пароль'); $('#errorLabel').css("visibility", "visible"); break;
+                    case '-2': $('#errorLabel').text('Ошибка доступа к базе'); $('#errorLabel').css("visibility", "visible"); break;
+                    case '-3': $('#errorLabel').text('Ошибка доступа к базе'); $('#errorLabel').css("visibility", "visible"); console.log(data); break;
+                    default:  window.location = Url('Cabinet/GetCabinetById/' + data); break;
+                }
+                console.log($('#errorLabel'));
+            },
+            error: function (data) {
+                $('#errorLabel').css('visibility', 'visible').text('Ошибка доступа к базе');
+                $('#errorLabel').text(data.responseText);
+            }
+        });
+    }
+
+    function ToPrivateOffice() {
+        console.log('ToPrivateOffice');
+        window.location = Url('Cabinet/GetCabinetById/-1');
+    }
+
+    function Logout() {
+        $.ajax({
+            url: Url("Cabinet/LogOut"),
+            type: 'POST',
+            success: function () {
+                window.location.reload();
+            },
+            error: function () {
+
+            }
+        });
+
+    }
+</script>
+
+<style type="text/css">
+    input#Word {
+        width: 264px;
+        border: 1px solid #CCC;
+    }
+
+    input#UserName {
+        width: 261px;
+        padding: 1px;
+    }
+</style>
+
+    <div align="center" style="font-weight:600; padding-left:7px; font-size:medium;">Личный кабинет</div>
+    <div style="margin:8px 0px 0px 0px; width:350px; border:0px">
+        <table width="100%" style="border: 0 none">
+            <tr>
+                <td style="border:0 none; padding-left:7px">
+                    Логин
+                </td>
+                <td style="border:0 none; padding-left:5px">
+                    <div class="editor-field"><input type="text" id="UserName" name="UserName" /></div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:0 none; padding-top:5px; padding-left:7px">
+                    Пароль  
+                </td>
+                <td style="border:0 none;padding-top:5px; padding-left:5px;">
+                    <div class="editor-field"><input type="password" id="word" name="Word" /></div>
+                </td>
+            </tr>
+        </table>
+        <div id="errorLabel" style="visibility:hidden; color:Red; padding-left:7px;"></div>
+        
+    </div>
+    <div align="right" style="width:350px; border:0px;">
+        <a style="margin-right:14px" href="/ru/Cabinet/Restore">Забыли пароль?</a>
+        <a style="margin-right:14px;" href="/ru/Cabinet/Register">Регистрация</a>
+        <input type="button" class="submitButton" onclick="Authenticate()" value="Войти" style="margin-right: 21px; width: 90px; color: White; background-color: #2374c2; font-size: 10pt" />
+    </div>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="popupVideo">
+            <a href="javascript:popupVideoClose()" class="close" id="popupVideoClose"><img src="../../Content/images/common/close.png" align=right></a>
+            <table>
+                <tr>
+                    <td style="width: 1000px;padding:5px 5px 2px 8px; border:1px solid #CCC; background-color:#f5f5f5">
+                        <video controls="controls" width="740" height="400" style="float: left;">
+                        </video>
+                        <ul id="playlist">
+                            <li movieurl="/Content/video/rolik_2.mp4">Персональная страница показателя</li>
+                            <li movieurl="/Content/video/rolik_1.mp4">Разделы "ТАЛДАУ" и функция "Поиск показателя"</li>
+                            <li movieurl="/Content/video/rolik_3.mp4">Вкладки "АНАЛИТИКА" и "СВОДНАЯ ТАБЛИЦА"</li>
+                            <li movieurl="/Content/video/rolik_4.mp4">Раздел "РАЗДЕЛЫ СТАТИСТИКИ"</li>
+                            <li movieurl="/Content/video/rolik_5.mp4">Раздел "АНАЛИТИКА"</li>
+                            <li movieurl="/Content/video/rolik_6.mp4">Раздел "ЛИЧНЫЙ КАБИНЕТ"</li>
+                            <li movieurl="/Content/video/rolik_7.mp4">Раздел "РЕГИОНЫ"</li>
+                            <li movieurl="/Content/video/rolik_8.mp4">Раздел "КОНСТРУКТОР"</li>
+                            <li movieurl="/Content/video/rolik_9.mp4">"ОБРАТНАЯ СВЯЗЬ", "АНКЕТИРОВАНИЕ" и "СПРАВКА"</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <div id="PopupBackground"></div>
+        <div class="page" style="z-index: 1;position: relative; /*width: 100%;*/">
+        <div class="headerDiv" style="background: url(/Content/images/common/top1px.png) ;background-position-y: -4px;">
+            <a href="/ru/Home" style="position: absolute; left: 20px; ">
+                <img src="/Content/images/common/top_1.png" style="position:relative;top:-5px;"/>
+            </a>
+
+
+            <span style="position: absolute; top: 23px; color: white; font-size: 17px; left: 171px; font-family: sans-serif, verdana, arial; transform: scaleY(1.1);"> ИНФОРМАЦИОННО-АНАЛИТИЧЕСКАЯ СИСТЕМА </span>
+            <span style="position: absolute; top: 50px; color: white; font-size: 16px; left: 171px; font-family: sans-serif, verdana, arial; white-space: pre-line;"> Бюро Национальной статистики Агентства по стратегическому
+планированию и реформам Республики Казахстан </span>
+          
+            <img src="/Content/images/common/top_2.png" style="position: absolute;right: 0;top: -4px;" />
+        </div>
+
+            <!-- Верхнее меню -->
+            <div class="menuDiv">
+                <ul class="sf-menu" style="width:940px">
+
+                    <li class="mainMenu">
+                        <a href="/ru/Home">
+                            <span>Главная</span>
+                        </a>
+                    </li>
+
+                    <li class="mainMenu">
+                        <a href="https://taldau.stat.gov.kz/ru/Industry/GetIndustryByID/703076#">
+                            <span>Разделы статистики</span>
+                            <span class="sf-sub-indicator"></span>
+                        </a>
+                        <ul>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/700894">Статистика национальных счетов</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/701156">Статистика предприятий</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/701185">Статистика сельского, лесного, охотничьего и рыбного хозяйства</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/701588">Статистика промышленного производства и окружающей среды</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/701824">Статистика инвестиций и строительства </a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702017">Статистика внутренней торговли</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702173">Статистика транспорта</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702337">Статистика связи</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702486">Статистика услуг</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702523">Статистика культуры</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702671">Статистика туризма</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702735">Статистика инновации</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702797">Статистика науки</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/702832">Статистика труда и занятости</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/703022">Статистика цен</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/18814801">Статистика энергетики и товарных рынков</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/703743">Статистика внешней и взаимной торговли</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/703828">Демографическая статистика</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/703910">Статистика образования</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/704288">Статистика здравоохранения</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/704444">Статистика уровня жизни</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/704626">Статистика жилищного фонда</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/704646">Статистика социального обеспечения</a></li>
+        <li><a class="smallSubMenu" href="/ru/Industry/GetIndustryByID/704764">Статистика правонарушений</a></li>
+                        
+                        </ul>
+                    </li>
+
+                    <li class="mainMenu">
+                        <a href="/ru/GeoStatistics">
+                            <span>Регионы</span>
+                            <span class="sf-sub-indicator"></span>
+                        </a>
+                        <ul>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/247783">АКМОЛИНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/248875">АКТЮБИНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/250502">АЛМАТИНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/252311">АТЫРАУСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/253160">ЗАПАДНО-КАЗАХСТАНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/255577">ЖАМБЫЛСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/256619">КАРАГАНДИНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/258742">КОСТАНАЙСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/260099">КЫЗЫЛОРДИНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/260907">МАНГИСТАУСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/261475">ЮЖНО-КАЗАХСТАНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/263009">ПАВЛОДАРСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/264023">СЕВЕРО-КАЗАХСТАНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/264990">ВОСТОЧНО-КАЗАХСТАНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/268012">Г.АСТАНА</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/268020">Г.АЛМАТЫ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/20242100">Г.ШЫМКЕНТ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/20243032">ТУРКЕСТАНСКАЯ ОБЛАСТЬ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/77208139">ОБЛАСТЬ ЖЕТІСУ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/77208140">ОБЛАСТЬ ҰЛЫТАУ</a></li>
+        <li><a class="smallSubMenu" href="/ru/Region/GetRegionById/77208141">ОБЛАСТЬ АБАЙ</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="mainMenu">
+                        <a href="/ru/AnalyticsWizard/AlternateIndex">
+                            <span>Виды анализов</span>
+                        </a>
+                    </li>
+                    <li class="mainMenu">
+                        <a href="/ru/ConstructorWizard">
+                            <span>Конструктор таблиц и диаграмм</span>
+                        </a>
+                    </li>
+                    <li class="mainMenu">
+                        <a href="javascript:func()" id="Login_PopUp_Link">
+                            <span>Личный кабинет</span>
+                        </a>
+                    </li>
+                    <a class="back_to_stat" href="http://stat.gov.kz/" style="float: right; margin-right: 2px; position: absolute; top: -115px; right: 0; padding-left: 0; padding-right: 0; ">Вернуться на сайт</a>
+                    <a class="not_scaled" href="#" onclick="return setScale(0);" style="position: absolute; top: -27px; left: 0px;">Версия для слабовидящих</a>
+                    <div class="scaled_part" style=" position: absolute; top: -25px; left: 10px;">
+                        <a class="" href="#" onclick="return clearScale();" style="float: left; /*position: absolute; top: -27px; left: 0px;*/ ">Обычная версия</a>
+                        <a class="" href="#" onclick="return setScale(0);" style="position: absolute; top: 0px; left: 110px; font-size: 12px;">A</a>
+                        <a class="" href="#" onclick="return setScale(1);" style="position: absolute; top: -4px; left: 121px; font-size: 16px;">A</a>
+                        <a class="" href="#" onclick="return setScale(2);" style="position: absolute; top: -8px; left: 135px; font-size: 20px;">A</a>
+                    </div>
+                    <span style="height: 29px; float: right; position: absolute; top: 0px; right: 2px;" class="header_right">
+                        <span style="float:right;" class="menuHelp">
+                            
+                            
+                            <a href="/ru/Feedback/ContactList" title="Обратная связь"><img src="../../Content/images/common/pismo.png" style="margin:1px 0px 3px 0px;"></a>
+                            <a href="/ru/Survey/SurveyList" title="Анкетирование"><img src="../../Content/images/survey/inquirer.png" style="margin:1px 0px 3px 0px;"></a>
+                            <a href="/ru/Home/Help" target="_blank"><img src="../../Content/images/common/vopros.png" style="margin:4px 0px 3px 0px;" alt="Справка" title="Справка"></a>
+                            <a href="javascript:openVideo(0)"><img src="../../Content/images/icons/video.png" style="margin: 4px 0px 3px 0px; width: 20px;" alt="Видеоинструкция" title="Видеоинструкция"></a>
+                        </span>
+
+
+                        <span id="language" style="float:right;line-height:24px;vertical-align:middle;">
+                                <a href="/kk/Industry/GetIndustryByID/703076">ҚАЗ</a>&nbsp;|&nbsp;<span id="current"><a href="/ru/Industry/GetIndustryByID/703076">РУС</a></span>&nbsp;|&nbsp;<a href="/en/Industry/GetIndustryByID/703076">ENG</a>&nbsp;
+                        </span>
+                    </span>
+                </ul>
+            </div>
+
+            <div style="background: #4C96B1; width: 960px; height: 5px;"> </div>
+
+            <div style="width:960px; background:#3b87db; color:#fff; vertical-align:middle; display: none;">
+                <span style="font-size: 24px; font-family: Arial; font-weight: bold; margin-left: 15px; text-shadow: 1px 1px 1px rgba(0,0,0,0.75); display: inline-block; width: 728px; min-height: 28px">Раздел - </span>
+                <style type="text/css">
+                    #language #current a {
+                        color: #fff;
+                        font-weight: bold;
+                        text-decoration: initial;
+                    }
+
+                    #language a {
+                        color: #fff;
+                        font-weight: normal;
+                        text-decoration: underline;
+                    }
+
+                    .x-docked {
+                        z-index: 0;
+                    }
+
+                    .close {
+                        position: absolute;
+                        right: -7px;
+                        top: -7px;
+                    }
+
+                    #PopupBackground {
+                        display: none;
+                        position: fixed;
+                        _position: absolute; /* hack for internet explorer 6*/
+                        height: 100%;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                        background: #000000;
+                        border: 1px solid #cecece;
+                        z-index: 3;
+                    }
+
+                    #popupLogin, #popupVideo {
+                        display: none;
+                        position: fixed;
+                        _position: absolute; /* hack for internet explorer 6*/
+                        /*height: 100%;
+                        width: 100%;*/
+                        top: 50%;
+                        left: 50%;
+                        /*background: #FFFFFF;*/
+                        /*border: 2px solid #cecece;*/
+                        z-index: 5;
+                        /*padding: 12px;*/
+                        font-size: 13px;
+                    }
+
+                    #playlist {
+                        display: table;
+                        list-style-type: none;
+                    }
+
+                        #playlist li.selected {
+                            background-color: lightblue;
+                        }
+
+                        #playlist li {
+                            cursor: pointer;
+                            padding: 5px;
+                        }
+
+                            #playlist li:hover {
+                                color: #4c96b1;
+                            }
+                </style>
+
+            </div>
+        </div>
+        <!-- Верхнее меню -->
+
+        <div class="page page_content" style="/*position: relative; top: 144px;*/">
+            <div id="content">
+                
+                    <div style="margin-top:4px; margin-bottom:4px; border-style:hidden">
+
+<link href="/Content/css/search/searchresult.css" rel="stylesheet" type="text/css" />
+<link href="/Content/css/search/jquery.liveSearch.css" rel="stylesheet" type="text/css" />
+<link href="/Content/css/search/mbTabset.css" rel="stylesheet" type="text/css" />
+<link href="/Content/css/jquery_msgbox/msgBoxLight.css" rel="Stylesheet" type="text/css" />
+<style type="text/css">
+    a {
+        color:#606062;
+        cursor:pointer;
+        text-decoration:none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        
+    }
+    a:hover {
+        color:#303032;
+        cursor:pointer;
+    }
+    .button_panel
+    {
+        background-color:#fff;
+        padding-bottom:10px;
+    }
+    .button_panel:hover
+    {
+        background-color:#f3f3f3;
+       
+    }
+    .button_panel:hover span
+    {
+        text-decoration:underline;
+         
+    }
+    .button_panel:hover
+    {
+        background: url(content/images/AnalyticsWizard/next.png) no-repeat right center;
+         background-color:#f3f3f3;
+    }
+    .noborder 
+    {
+        border: none !important;
+    }
+    .noborder .image 
+    {
+        border: none !important;
+        padding-left:30px;
+        padding-top:10px;
+        vertical-align:top;
+    }
+    .noborder .text 
+    {
+        border: none !important;
+        padding-left:30px;
+        padding-right:20px;
+    }
+    .noborder .find_text 
+    {
+        border: none !important;
+        padding-left:30px;
+        padding-right:100px;
+    }
+    .noborder .text .title
+    {
+       font-size:x-large;
+       color:#6288b5;
+    }
+    .noborder .text p
+    {
+        padding-top:10px;
+        padding-left:10px;
+        padding-right:50px;
+        text-align:justify;
+    }
+    .noborder .text ul
+    {
+        padding-left:25px;
+        padding-right:50px;
+        text-align:justify;
+    }
+</style>   
+
+
+<div class="content_blocks" style="margin-bottom:0px; padding-bottom:0px; width:100%; border-style:hidden;">
+    <div id="1" style="border-style:hidden;width:100%; color:#606062;text-decoration:none;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none; margin-bottom:0px; padding-bottom:0px;">
+        <table width="100%" style="padding: 5px 5px 5px 0px; margin:0px;height:100%">
+            <tr style="padding:5px 0px 5px 0px">
+                <td style="border:0; vertical-align:top; padding-top:5px; width:640px; vertical-align:middle">
+
+                    <table width="100%" class="noborder" style="margin-bottom:0px; padding-bottom:0px;">
+                        <tr>
+                            <!--<td class="image" style="padding-left:7px;padding-right:0px; padding-top:11px;">
+                                <img src="content/images/search/Search.png" width="20px" height="20px" />
+                            </td>-->
+                            <td class="find_text" style="padding-left:8px;padding-right:0px">
+
+
+<form action="/ru/Search/SearchByKeyWord?pageId=10" method="get">                                    <div style="width:100%;margin-top:5px" id="SearchForm">
+                                        <table class="noborder" align="left" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="left" class="searchTextArea_text" style="border:0; margin-left:3px; width: 405px;">
+                                                        <input class="searchTextElement" type="text" id="keyword" name="keyword" style="margin-left:0px; font-size:12pt; width:580px;height:30px;" />
+                                                        <input type="hidden" name="chosenMeasureId" value="-1" />
+                                                    </td>
+                                                    <td align="left" style="border:0; padding: 0px 0px 0px 50px">
+                                                        <div>
+                                                            <!--<input id="QuickSearch" type="image" src="content/images/search/Search.png" value="Поиск" class="submitButton" style="height: 32px; font-size: 10pt; margin: 8px 20px 5px 3px; color: White; border-color: transparent; min-width: 32px;" />-->
+                                                            <input type="submit" value="Поиск" class="submitButton" style="width: 100px; font-size: 10pt; margin: 3px 20px 5px 0px; ; color: White; background-color: #4C96B1;height: 30px;" id="QuickSearch"/>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+</form>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td align="right" style="border: 0;  width: 470px; vertical-align: middle;">
+                        <a href="/ru/Catalog" style="display:none;font-weight: 500; padding-left: 7px; margin-right: 10px; font-size: medium;"><img src="/Content/images/search/index_catalog.png" style="margin-right:12px" />Поиск по каталогу показателей</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+                    </div>
+
+                <div id="main">
+
+
+
+<div class="content_blocks">
+    
+    <table class = "mainTable" style="margin-top:-1px; border: 1px solid; border-color:Silver">
+        <tr>
+            <td>
+                <div class="block_header">: ОСНОВНЫЕ ПОКАЗАТЕЛИ РАЗДЕЛА (имеющие итоги по РК)</div>
+                <div id="grid" style="background-color:White">
+
+
+
+
+
+<div class="gridToolbar">
+    <ul id="menu1">
+                        <li><a class="selected unselectable">Рейтинг по приросту</a></li>
+                        <li><a class="unselectable" data-ajax="true" data-ajax-begin="showLoadingElement" data-ajax-method="Get" data-ajax-mode="replace" data-ajax-success="onComplete(&#39;ru/Industry/GetIndustryById/703076?periodID=7&amp;viewType=Trends&#39;);" data-ajax-update="#grid" href="/ru/Industry/GetIndustryById/703076?periodID=7&amp;viewType=Trends">Тренды</a></li>
+
+    </ul>
+    <div>
+        <ul class="nav" id="period" style="position:absolute;  margin-left:600px;">
+        </ul>
+    </div>
+                <ul class="nav" id="export" style="margin-left:833px">
+                    <li>
+                        <span class="right">Экспорт</span>&nbsp;<img src="/Content/images/common/arrow.gif" />
+                        <ul style="width:120px; z-index:5">
+                            <li><a onclick="exportToExcel('Раздел', '703076', 'Rating', '', '7')" style="cursor:pointer">Экспорт в Excel</a></li>
+                            <li><a onclick="exportToPDF('Раздел', '703076', 'Rating', '', '7')" style="cursor:pointer">Экспорт в PDF</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a type="application/rss+xml" id="rss" style="" href="/ru/MainGridWidget/IndexFeed?pageType=Branch&amp;periodID=7&amp;termID=703076"> <img title="RSS" alt="RSS" width="17px" height="17px" style="text-decoration: none; border-style:none" src="Content/images/grid/rss.jpg" /></a>
+            </div>
+    
+<div id="loader" class="loader" align="center">
+    <div class="loadingDiv">Загрузка...</div>
+</div>
+<div id="mask"></div>
+
+<div class="mainGrid" id="mainGrid" style="padding-top:0px; ">
+<table class="x-grid3"  style="border-bottom-style:none; border-top-style:none;margin:0">
+<thead>
+   <tr class="unselectable">
+        <th align="left" style="width:405px;">
+            Наименование показателя
+        </th>
+        <th align="right" style="width:120px; padding-right:5px;">
+            Значение
+        </th>
+        <th align="left"  style="width:130px;">
+            Единица измерения
+        </th>
+        <th align="left"  style="width:100px;">
+             Прирост (+) / Снижение (-)
+        </th>
+        <th align="left"  style="width:100px;">
+            Изменение (в %)
+        </th>        
+        <th align="left"  style="width:100px;">
+            Период
+        </th>
+        <th style="width:10px"></th>
+    </tr>
+</thead>
+</table>
+<div id="indexesDiv" style="overflow: auto;height: 600px; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px; background-color:White;">
+<table class="x-grid3" id="indexes" style="width:940px; border-style:none;"> 
+        <tr style="background-color:White;">
+            <td style="width: 405px; padding: 8px 0px 8px 5px;">
+              <p>В данном разделе нет показателя</p>
+            </td>
+        </tr>
+</table>
+</div>
+</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="margin-top:-1px; border: 1px solid; border-color:Silver">        
+                <div style="font-size:medium; margin-left:5px; margin-bottom:4px; padding-right:3px; padding-top:4px" id="divInfo">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* В случае отсутствия статистического показателя на странице &#171;Разделы статистики&#187; предлагаем воспользоваться функцией поиска. 
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div id="charts">
+        <table>
+
+        </table>
+    </div>
+
+</div>
+</div>
+                <div id="footer_content">
+                    <table width="100%">
+                        <tr>
+                            <td align="center">
+                                <span>Пользователи онлайн : 33</span>
+                            </td>
+                        </tr>               
+                        <tr>
+                            <td valign="top" align=center>
+                                <div class="footer_links">
+                                    <a href="/ru/Feedback/ContactList">Обратная связь</a> |
+                                    <span id="about_system">О СИСТЕМЕ</span>
+                                    <!--span style="float:right;">
+                                        <span class="popbox" style="display:inline-block; width:22px !important;">
+                                            <a class="open" href='#'>
+                                            </a>
+                                            <div class="collapse">
+                                                <div class="box">
+                                                    <div class="arrow"></div>
+                                                    <div class="arrow-border"></div>
+                                                    <p>Подписка на получение новостей по порталу</p>
+                                                    <input type="text" id="email_4" placeholder="Email" />
+                                                    <label style="color:Red;" id="labelemail_4"></label>
+                                                    <br />
+                                                    <input type="submit" value="Подписаться" class="subscribe" category="4" email="email_4" />
+                                                    <input type="button" class="close" value="Закрыть" />
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </span-->
+                                </div>
+
+                                <div class="about_content" id="pop-up-window-about" style="visibility:hidden; z-index:1000000"> 
+Информационно-аналитическая система &#171;Талдау&#187; Бюро Национальной статистики Агентства по стратегическому планированию и реформам Республики Казахстан предоставляет широкий доступ к официальной статистической информации с возможностью анализа в интерактивном режиме. </div>
+
+                                <div class="collapse">
+                                    <div class="box">
+                                        <div class="arrow"></div>
+                                        <div class="arrow-border"></div>
+                                        <p>Подписка на получение новостей по порталу</p>
+                                        <input type="text" id="email4" placeholder="Email" /><br />
+                                        <label style="color:Red;" id="label4"></label>
+                                        <br />
+                                        <input type="submit" value="Подписаться" class="subscribe" categorygroupid="4" />
+                                        <input type="button" class="close" value="Закрыть" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <span>Бюро Национальной статистики Агентства по стратегическому планированию и реформам Республики Казахстан</span><br />
+                                <!--span>Информационно-аналитическая система &#171;Талдау&#187; - Версия 2.0</span><br />
+                                <a href="http://www.alem.kz">Разработано ИВЦ</a><br />
+                                <span>Все права защищены</span>
+                                <span>2019</span-->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+<link href="/Scripts/ext42/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+<link href="/Scripts/Chat/chat.css" rel="stylesheet" type="text/css" />
+
+<link href="/Scripts/rating/rating.css" rel="stylesheet" type="text/css" />
+<script src="/Scripts/rating/rating.js" type="text/javascript"></script>
+
+<script src="/Scripts/Chat/Chat_dictionary.ru.js" type="text/javascript"></script>
+<script src="/Scripts/Chat/ChatUI.js" type="text/javascript"></script>
+<script>
+    if (typeof Ext == "undefined") {
+        var onExtRatingLoaded = function () {
+            restoreChat();
+        };
+        var onExtLoaded = function () {
+            $.getScript('/Scripts/rating/rating.js', onExtRatingLoaded);
+        };
+        $.getScript('/Scripts/ext42/ext-all.js', onExtLoaded);
+    }
+    jQuery(restoreChat);
+</script>
+
+    </div>
+    </body>
+</html>

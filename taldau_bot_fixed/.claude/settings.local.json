@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ':*)",
+      "Bash(python)",
+      "Bash(python -c \"import json; data=json.load\\(open\\('output/debug_comp_all.json',encoding='utf-8'\\)\\); print\\(repr\\(data[0]['text'][:50].encode\\('utf-8'\\)\\)\\)\")",
+      "Bash(timeout 60 bash -c \"while [ ! -f 'C:/Users/ЕРАСЫЛ/Documents/taldau_bot_fixed/cpi_scripts/output/test_one_region.csv' ]; do sleep 3; done; echo 'CSV created'\")",
+      "Bash(timeout 90 python -c ':*)",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(python build_html.py --csv output/cpi_sample.csv --out output/cpi_sample.html)",
+      "Bash(python run.py --skip-excel --skip-html)",
+      "Bash(python -c \"import fetch, config; print\\('OK'\\); print\\('comp keys:', list\\(config.KNOWN_PARAMS.keys\\(\\)\\)\\)\")",
+      "Bash(python -c \"import fetch; print\\('OK'\\)\")",
+      "Bash(python build_excel.py)",
+      "Bash(pip install *)",
+      "Bash(python *)",
+      "WebSearch",
+      "WebFetch(domain:ai.google.dev)"
+    ]
+  }
+}
